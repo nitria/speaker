@@ -1,0 +1,119 @@
+$white: #fff;
+
+@mixin flex($direction) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
+}
+
+.fas {
+  font-size: 2em;
+  color: $white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to right, #7b4397, #dc2430);
+}
+
+.container {
+  @include flex(column);
+  width: 400px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+
+  span {
+    font-size: 4em;
+    font-family: Arial, Helvetica, sans-serif;
+    color: $white;
+  }
+
+  .box {
+    @include flex(column);
+    width: 220px;
+    position: relative;
+    margin-top: 50px;
+
+    .volume {
+      @include flex(row);
+      .speaker {
+        width: 40px;
+        height: 40px;
+        position: relative;
+
+        .fas {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        .fa-volume-up,
+        .fa-volume-mute {
+          display: none;
+        }
+      }
+
+      .bar {
+        @include flex(row);
+        width: 100%;
+        height: 100%;
+
+        input {
+          position: relative;
+          top: -4px;
+          height: 8px;
+          border-radius: 10px;
+
+          &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            border: none;
+          }
+          &::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+
+            border: none;
+          }
+        }
+      }
+    }
+
+    .controlButtons {
+      @include flex(row);
+      position: relative;
+      width: 100%;
+
+      .fa-play,
+      .fa-pause {
+        position: absolute;
+        top: 0;
+        left: 30%;
+        transform: translateX(-50%);
+      }
+
+      .fa-pause {
+        display: none;
+      }
+    }
+  }
+}
